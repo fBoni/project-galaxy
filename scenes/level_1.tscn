@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://co3nrrbrx24no"]
+
+[ext_resource type="PackedScene" uid="uid://d1uwv5eupdt5i" path="res://scenes/player.tscn" id="1_014kd"]
+[ext_resource type="Script" uid="uid://nnbpnsv8khyi" path="res://scripts/level_1.gd" id="1_bswci"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_na5hj"]
+
+[node name="level1" type="Node2D" unique_id=1009353566]
+script = ExtResource("1_bswci")
+
+[node name="background" type="Sprite2D" parent="." unique_id=247172873]
+modulate = Color(0.015686275, 0, 0.078431375, 1)
+position = Vector2(320, 240.49998)
+scale = Vector2(640, 477)
+texture = SubResource("CanvasTexture_na5hj")
+
+[node name="player" parent="." unique_id=25395235 instance=ExtResource("1_014kd")]
+position = Vector2(316, 244)
+
+[node name="lasers" type="Node2D" parent="." unique_id=704758389]

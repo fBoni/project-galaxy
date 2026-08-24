@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://0fxprpi5tci2"]
+
+[ext_resource type="Script" uid="uid://d2krs11s41ls8" path="res://scripts/laser.gd" id="1_a7dhc"]
+[ext_resource type="Texture2D" uid="uid://c60cuh2fh4gid" path="res://bullet/laser_shoot.png" id="1_xmihv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7dhc"]
+atlas = ExtResource("1_xmihv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjj73"]
+atlas = ExtResource("1_xmihv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_412cd"]
+atlas = ExtResource("1_xmihv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8rul"]
+atlas = ExtResource("1_xmihv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_788yo"]
+atlas = ExtResource("1_xmihv")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dakmh"]
+atlas = ExtResource("1_xmihv")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjiwp"]
+atlas = ExtResource("1_xmihv")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p3xod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7dhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjj73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_412cd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8rul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_788yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dakmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjiwp")
+}],
+"loop": 1,
+"name": &"shoot",
+"speed": 24.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2pr0b"]
+radius = 1.0
+height = 10.0
+
+[node name="laser" type="Area2D" unique_id=2084625187]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_a7dhc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1847223683]
+position = Vector2(0, -5)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_p3xod")
+animation = &"shoot"
+autoplay = "shoot"
+frame_progress = 0.29373494
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1713812330]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_2pr0b")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=988237096]
+position = Vector2(9, 0)
+rect = Rect2(-10, -10, 2, 10)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

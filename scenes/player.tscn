@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://d1uwv5eupdt5i"]
+
+[ext_resource type="Texture2D" uid="uid://bl61l8xsoq36p" path="res://player/galaxy_project_player_idle.png" id="1_g2els"]
+[ext_resource type="Script" uid="uid://b6atfgot3h43r" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://4fapg5ewcu00" path="res://player/galaxy_project_player_walk.png" id="2_qhqgy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kghbt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g2els")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kghbt"]
+radius = 8.0
+height = 22.0
+
+[node name="player" type="CharacterBody2D" unique_id=25395235]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_qhqgy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1439188010]
+sprite_frames = SubResource("SpriteFrames_kghbt")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=407923685]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_kghbt")
+
+[node name="Muzzle" type="Node2D" parent="." unique_id=1140110376]
+position = Vector2(0, -18)
