@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal laser_shot(laser)
+#signal laser_shot(laser) #sinal não é mais necessário
 
 @export var acceleration:float = 10.0
 @export var max_speed:float = 300.0
@@ -13,8 +13,8 @@ signal laser_shot(laser)
 var laser_scene = preload("res://scenes/laser.tscn")
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("shoot"):
-	#if Input.is_action_just_pressed("shoot"):
+	#if Input.is_action_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot"):
 		shoot_laser()
 
 func _ready() -> void:
