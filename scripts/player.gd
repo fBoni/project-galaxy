@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	#Teletransporta a nave para o outro lado ao sair da tela
 	var screen_size = get_viewport_rect().size
 	if global_position.y < 0:
 		global_position.y = screen_size.y
