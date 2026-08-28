@@ -1,3 +1,4 @@
+#Player
 extends CharacterBody2D
 
 #signal laser_shot(laser) #sinal não é mais necessário
@@ -5,6 +6,10 @@ extends CharacterBody2D
 @export var acceleration:float = 10.0
 @export var max_speed:float = 300.0
 @export var rotation_speed:float = 250.0
+@export var fire_rate: float = 0.20
+@export var friction: float = 0.20
+
+var shoot_timer: float = 0.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -13,9 +18,12 @@ extends CharacterBody2D
 var laser_scene = preload("res://scenes/laser.tscn")
 
 func _process(delta: float) -> void:
-	#if Input.is_action_pressed("shoot"):
-	if Input.is_action_just_pressed("shoot"):
+	if shoot_timer > 0:
+		shoot_timer -= delta
+	
+	if Input.is_action_pressed("shoot") and shoot_timer <= 0:
 		shoot_laser()
+		shoot_timer = fire_rate
 
 func _ready() -> void:
 	animated_sprite_2d.play("idle")
@@ -32,7 +40,7 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play("idle")
 	
 	if input_vector.y == 0:
-		velocity = velocity.move_toward(Vector2.ZERO, 3)
+		velocity = velocity.move_toward(Vector2.ZERO, friction)
 		
 	if Input.is_action_pressed("rotate_right"):
 		rotate(deg_to_rad(rotation_speed * delta))

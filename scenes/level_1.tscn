@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1uwv5eupdt5i" path="res://scenes/player.tscn" id="1_014kd"]
 [ext_resource type="Script" uid="uid://nnbpnsv8khyi" path="res://scripts/level_1.gd" id="1_bswci"]
+[ext_resource type="PackedScene" uid="uid://dj4ay0eqwvpkw" path="res://scenes/asteroid.tscn" id="3_rus8k"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_na5hj"]
 
@@ -18,3 +19,20 @@ texture = SubResource("CanvasTexture_na5hj")
 position = Vector2(316, 244)
 
 [node name="lasers" type="Node2D" parent="." unique_id=704758389]
+
+[node name="asteroids" type="Node2D" parent="." unique_id=770803666]
+
+[node name="asteroid" parent="asteroids" unique_id=2141147085 instance=ExtResource("3_rus8k")]
+position = Vector2(215, 216)
+
+[node name="asteroid2" parent="asteroids" unique_id=507949838 instance=ExtResource("3_rus8k")]
+position = Vector2(510, 107)
+
+[node name="asteroid3" parent="asteroids" unique_id=1025152888 instance=ExtResource("3_rus8k")]
+position = Vector2(525, 352)
+
+[node name="asteroid4" parent="asteroids" unique_id=959345849 instance=ExtResource("3_rus8k")]
+position = Vector2(134, 373)
+
+[node name="asteroid5" parent="asteroids" unique_id=170523656 instance=ExtResource("3_rus8k")]
+position = Vector2(104, 85)
